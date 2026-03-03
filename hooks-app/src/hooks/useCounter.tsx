@@ -1,23 +1,27 @@
 import { useState } from 'react';
 
-export const useCounter = () => {
-	const [counter, setCounter] = useState(1);
+interface Props {
+  value?: number;
+}
 
-	const increment = () => {
-		setCounter(counter + 1);
-	};
+export const useCounter = (value = 1) => {
+  const [counter, setCounter] = useState(value);
 
-	const decrement = () => {
-		if (counter == 1) return;
-		setCounter(counter - 1);
-	};
+  const increment = () => {
+    setCounter(counter + 1);
+  };
 
-	return {
-		//Props
-		counter,
+  const decrement = () => {
+    if (counter == 1) return;
+    setCounter(counter - 1);
+  };
 
-		//Methods
-		increment,
-		decrement,
-	};
+  return {
+    //Props
+    counter,
+
+    //Methods
+    increment,
+    decrement,
+  };
 };
